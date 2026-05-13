@@ -3,84 +3,83 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Users, Heart, Camera, Quote, ArrowRight, MapPin, Award, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+import { siteShortName } from "@/shared/site";
 
 export default function ComunidadSection() {
-  const liderazgos = [
+  const testimonios = [
     {
-      nombre: "María Elena Quispe",
-      rol: "Lideresa vecinal · AA.HH. Los Jardines",
-      frase: "El cambio empieza cuando nos organizamos. CITE nos enseñó que nuestras voces importan y que podemos transformar nuestro propio barrio.",
-      proyecto: "Recuperación del parque principal",
+      nombre: "Rosa Huamán",
+      rol: "Taxista · San Miguel",
+      frase: `${siteShortName} me avisó cuando tocaba cambio de aceite y frenos. En taller me explicaron con calma y sin sorpresas en la boleta.`,
+      servicio: "Mantenimiento preventivo",
       color: "from-[#D79259]/20 to-[#D79259]/5",
-      imagen: "/comunidad/maria.jpg"
+      imagen: "/comunidad/maria.jpg",
     },
     {
-      nombre: "Carlos Mendoza",
-      rol: "Joven voluntario · Estudiante de arquitectura",
-      frase: "Participar en CITE cambió mi forma de ver la ciudad. Ahora sé que el urbanismo se construye con la gente, no desde un escritorio.",
-      proyecto: "Mapeo colectivo del distrito",
+      nombre: "Luis Calderón",
+      rol: "Transporte de carga",
+      frase: "Necesitaba salir de viaje y diagnosticaron una fuga a tiempo. El seguimiento por WhatsApp me ahorró idas al taller.",
+      servicio: "Sistema de refrigeración",
       color: "from-[#D79259]/20 to-[#D79259]/5",
-      imagen: "/comunidad/carlos.jpg"
+      imagen: "/comunidad/carlos.jpg",
     },
     {
-      nombre: "Juana Ríos",
-      rol: "Artesana · Promotora cultural",
-      frase: "Nuestro territorio tiene memoria, saberes y mucha creatividad. CITE nos ayuda a visibilizarlo y ponerlo en valor.",
-      proyecto: "Feria de iniciativas culturales",
+      nombre: "María Egúsquiza",
+      rol: "Familia · uso particular",
+      frase: "Es la primera vez que entiendo qué le pasó a mi auto. Las fotos del hallazgo y el presupuesto desglosado dan mucha confianza.",
+      servicio: "Suspensión y geometría",
       color: "from-[#D79259]/20 to-[#D79259]/5",
-      imagen: "/comunidad/juana.jpg"
-    }
+      imagen: "/comunidad/juana.jpg",
+    },
   ];
 
   const actividadesRecientes = [
     {
-      titulo: "Taller de cartografía social",
-      fecha: "15 oct 2024",
-      participantes: "25 asistentes",
-      lugar: "Casa de la Juventud",
-      tipo: "Formación"
+      titulo: "Campaña de revisión pre viaje",
+      fecha: "Última semana",
+      participantes: "32 vehículos",
+      lugar: "Taller principal",
+      tipo: "Promoción",
     },
     {
-      titulo: "Diagnóstico participativo",
-      fecha: "8 oct 2024",
-      participantes: "40 vecinos",
-      lugar: "AA.HH. Los Jardines",
-      tipo: "Investigación"
+      titulo: "Capacitación en híbridos",
+      fecha: "Mes anterior",
+      participantes: "Equipo técnico",
+      lugar: "Sala de formación",
+      tipo: "Talento",
     },
     {
-      titulo: "Activación del espacio público",
-      fecha: "1 oct 2024",
-      participantes: "60 personas",
-      lugar: "Plaza de Armas",
-      tipo: "Intervención"
-    }
+      titulo: "Alianza con proveedor de filtros",
+      fecha: "Trimestre",
+      participantes: "Stock ampliado",
+      lugar: "San Miguel",
+      tipo: "Abastecimiento",
+    },
   ];
 
-  const convocatorias = [
+  const promociones = [
     {
-      titulo: "Voluntariado para mapeo urbano",
-      fecha: "Inicia: 5 nov 2024",
-      descripcion: "Buscamos jóvenes interesados en aprender sobre cartografía social y diagnóstico participativo.",
-      vacantes: "10 cupos"
+      titulo: "Check express de 20 puntos",
+      fecha: "Vigente todo el mes",
+      descripcion: "Ideal antes de viajes largos: fluidos, luces, frenos y neumáticos revisados en una hora.",
+      vacantes: "Cupos limitados mañana",
     },
     {
-      titulo: "Taller de liderazgo comunitario",
-      fecha: "Inicia: 12 nov 2024",
-      descripcion: "Espacio de formación para líderes y lideresas vecinales interesados en gestión territorial.",
-      vacantes: "15 cupos"
-    }
+      titulo: "Descuento en segunda unidad familiar",
+      fecha: "Clientes con historial",
+      descripcion: "Si ya atendimos tu vehículo, el segundo auto de la familia accede a precio preferencial en mantenimiento básico.",
+      vacantes: "Consultar condiciones",
+    },
   ];
 
   return (
     <section id="comunidad" className="py-20 md:py-28 relative overflow-hidden bg-[#F8F7F3]">
-      {/* Elementos decorativos */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 text-8xl">👥</div>
         <div className="absolute bottom-20 right-10 text-8xl">💬</div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
-        {/* Cabecera */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,25 +89,22 @@ export default function ComunidadSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D79259]/10 border border-[#D79259]/20 mb-6">
             <Users className="h-4 w-4 text-[#D79259]" />
-            <span className="text-[#2C312D] text-sm font-medium">Comunidad activa</span>
+            <span className="text-[#2C312D] text-sm font-medium">Clientes que nos recomiendan</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#2C312D] mb-6">
-            Protagonistas del
-            <span className="block text-[#D79259]">
-              cambio territorial
-            </span>
+            Historias en
+            <span className="block text-[#D79259]">ruta y trabajo</span>
           </h2>
 
           <p className="text-lg text-[#2C312D]/80 leading-relaxed">
-            Visibilizamos y fortalecemos el liderazgo de juventudes, estudiantes, vecinos y creadores 
-            que impulsan transformaciones reales desde sus territorios.
+            Lo que importa no es solo arreglar el auto, sino devolverlo a la calle con seguridad y con la tranquilidad de
+            haber sido informado en cada paso.
           </p>
         </motion.div>
 
-        {/* Liderazgos destacados */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {liderazgos.map((persona, idx) => (
+          {testimonios.map((persona, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -119,7 +115,9 @@ export default function ComunidadSection() {
               <Card className="bg-white border border-[#2C312D]/10 hover:border-[#D79259]/30 transition-all duration-300 h-full group hover:shadow-lg">
                 <CardContent className="p-6">
                   <div className="relative mb-4">
-                    <div className={`w-full h-32 rounded-xl bg-gradient-to-br ${persona.color} flex items-end justify-start p-4`}>
+                    <div
+                      className={`w-full h-32 rounded-xl bg-gradient-to-br ${persona.color} flex items-end justify-start p-4`}
+                    >
                       <Camera className="h-8 w-8 text-[#D79259]/50" />
                     </div>
                     <div className="absolute -bottom-6 left-4">
@@ -134,14 +132,12 @@ export default function ComunidadSection() {
                     <p className="text-sm text-[#D79259] mb-2">{persona.rol}</p>
                     <p className="text-xs text-[#2C312D]/60 mb-3 flex items-center gap-1">
                       <Award className="h-3 w-3" />
-                      {persona.proyecto}
+                      {persona.servicio}
                     </p>
-                    
+
                     <div className="relative">
                       <Quote className="absolute -top-2 -left-1 h-4 w-4 text-[#D79259]/30 rotate-180" />
-                      <p className="text-sm text-[#2C312D]/70 italic pl-4">
-                        "{persona.frase}"
-                      </p>
+                      <p className="text-sm text-[#2C312D]/70 italic pl-4">&ldquo;{persona.frase}&rdquo;</p>
                     </div>
                   </div>
                 </CardContent>
@@ -150,9 +146,7 @@ export default function ComunidadSection() {
           ))}
         </div>
 
-        {/* Actividades recientes y convocatorias */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {/* Actividades recientes */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -161,7 +155,7 @@ export default function ComunidadSection() {
           >
             <h3 className="text-2xl font-bold text-[#2C312D] mb-6 flex items-center gap-2">
               <Calendar className="h-6 w-6 text-[#D79259]" />
-              Actividades recientes
+              Novedades del taller
             </h3>
             <div className="space-y-4">
               {actividadesRecientes.map((actividad, idx) => (
@@ -190,7 +184,6 @@ export default function ComunidadSection() {
             </div>
           </motion.div>
 
-          {/* Convocatorias activas */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -199,23 +192,23 @@ export default function ComunidadSection() {
           >
             <h3 className="text-2xl font-bold text-[#2C312D] mb-6 flex items-center gap-2">
               <Heart className="h-6 w-6 text-[#D79259]" />
-              Convocatorias activas
+              Promociones vigentes
             </h3>
             <div className="space-y-4">
-              {convocatorias.map((convocatoria, idx) => (
+              {promociones.map((promo, idx) => (
                 <Card key={idx} className="bg-gradient-to-r from-[#D79259]/5 to-transparent border-2 border-[#D79259]/30">
                   <CardContent className="p-6">
-                    <h4 className="font-bold text-[#2C312D] mb-2">{convocatoria.titulo}</h4>
-                    <p className="text-sm text-[#2C312D]/70 mb-3">{convocatoria.descripcion}</p>
+                    <h4 className="font-bold text-[#2C312D] mb-2">{promo.titulo}</h4>
+                    <p className="text-sm text-[#2C312D]/70 mb-3">{promo.descripcion}</p>
                     <div className="flex justify-between items-center text-sm">
-                      <span className="text-[#D79259] font-medium">{convocatoria.fecha}</span>
-                      <span className="text-[#2C312D]/50 text-xs">{convocatoria.vacantes}</span>
+                      <span className="text-[#D79259] font-medium">{promo.fecha}</span>
+                      <span className="text-[#2C312D]/50 text-xs">{promo.vacantes}</span>
                     </div>
                     <Button
                       className="w-full mt-4 bg-[#D79259] text-[#2C312D] hover:bg-[#D79259]/90 font-medium"
                       onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
                     >
-                      Postular ahora
+                      Quiero agendar
                     </Button>
                   </CardContent>
                 </Card>
@@ -224,7 +217,6 @@ export default function ComunidadSection() {
           </motion.div>
         </div>
 
-        {/* Llamado a la acción */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -235,12 +227,10 @@ export default function ComunidadSection() {
           <Card className="bg-gradient-to-br from-[#D79259]/10 to-[#D79259]/5 border-2 border-[#D79259]/30">
             <CardContent className="p-8 md:p-12">
               <Users className="h-12 w-12 text-[#D79259] mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-[#2C312D] mb-3">
-                ¿Quieres ser parte de la comunidad?
-              </h3>
+              <h3 className="text-2xl font-bold text-[#2C312D] mb-3">¿Primera vez con nosotros?</h3>
               <p className="text-[#2C312D]/70 max-w-2xl mx-auto mb-6">
-                Si eres joven, estudiante, vecino o creador con ganas de transformar tu territorio, 
-                tenemos un lugar para ti. No necesitas experiencia, solo compromiso y ganas de aprender.
+                Agenda una revisión, trae tu historial si lo tienes y te explicamos el plan antes de tocar una tuerca.
+                {siteShortName} queda como tu bitácora digital del vehículo.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button
@@ -248,16 +238,16 @@ export default function ComunidadSection() {
                   className="bg-[#D79259] text-[#2C312D] hover:bg-[#D79259]/90 font-bold shadow-lg group"
                   onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Quiero sumarme
+                  Hablar con recepción
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-2 border-[#D79259] bg-transparent text-[#2C312D] hover:bg-[#D79259]/10"
-                  onClick={() => window.open("/voluntariado", "_blank")}
+                  onClick={() => document.getElementById("lineas-accion")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Ver programa de voluntariado
+                  Ver módulos del sistema
                 </Button>
               </div>
             </CardContent>

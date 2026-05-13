@@ -1,46 +1,27 @@
-# Astro Starter Kit: Basics
+# CRMSM — Sistema Automecánica San Miguel
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Frontend en **Astro 5** + **React** + **Tailwind CSS 4** para la presencia web del taller **Automecánica San Miguel** y su sistema corto de marca **CRMSM** (citas, comunicación y transparencia con el cliente).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Marca y configuración
 
-## 🚀 Project Structure
+- Nombre corto: **CRMSM**
+- Nombre completo: **Sistema Automecánica San Miguel**
+- Constantes centralizadas: `src/shared/site.ts` (URL canónica, correo, redes, textos SEO reutilizables)
 
-Inside of your Astro project, you'll see the following folders and files:
+Actualiza `siteUrl` en `site.ts` y `astro.config.mjs` cuando tengas el dominio definitivo.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Comandos
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+| Comando        | Acción                          |
+| -------------- | ------------------------------- |
+| `pnpm install` | Instala dependencias            |
+| `pnpm dev`     | Servidor de desarrollo          |
+| `pnpm build`   | Genera el sitio en `./dist/`   |
+| `pnpm preview` | Vista previa del build          |
 
-## 🧞 Commands
+## Estructura relevante
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `src/pages/` — Rutas Astro (`index`, `galeria`, `fondos`, `politica-donaciones`, `registro`)
+- `src/landing/` — Pantallas y secciones React del landing
+- `src/components/core/` — Navbar, footer, marca (`BrandMark`)
+- `public/favicon.svg` — Ícono usado en cabecera y Open Graph por defecto

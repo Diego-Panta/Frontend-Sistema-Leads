@@ -2,30 +2,30 @@ import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { workshopAddress } from "@/shared/site";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
-      question: "¿Cómo se utilizarán las donaciones?",
+      question: "¿Cómo agendo una cita?",
       answer:
-        "Todo lo recaudado será destinado a la compra de insumos para la chocolatada, panetones, juguetes y artículos para el compartir navideño. Las donaciones materiales —como juguetes o dulces— se entregarán directamente a los niños y niñas de hasta 13 años de edad, pertenecientes a familias de bajos recursos de nuestra comunidad."
+        "Puedes escribirnos por WhatsApp, correo o el formulario de contacto con marca, modelo y síntoma del vehículo. Confirmamos disponibilidad y te proponemos el mejor turno.",
     },
     {
-      question: "¿Puedo donar sin asistir al evento?",
+      question: "¿Ofrecen garantía en los trabajos?",
       answer:
-        "¡Sí! Puedes colaborar sin estar presente. Solo necesitas ponerte en contacto con alguno de los miembros voluntarios para entregar tu donación física, o hacerlo de forma monetaria escaneando nuestro código QR oficial."
+        "Sí. La garantía cubre mano de obra y repuestos instalados según el tipo de servicio; los detalles constan en tu orden de trabajo y en el comprobante.",
     },
     {
-      question: "¿Qué puedo donar?",
+      question: "¿Puedo pagar con Yape o transferencia?",
       answer:
-        "Aceptamos juguetes nuevos o en buen estado, dulces, panetones, artículos escolares y cualquier detalle que pueda llevar alegría a los niños. También puedes donar dinero mediante el QR disponible en el evento o en nuestra web."
+        "Aceptamos Yape, Plin y transferencias bancarias. Para servicios mayores podemos solicitar un abono al autorizar el presupuesto.",
     },
     {
-      question: "¿Dónde se realizará el evento?",
-      answer:
-        "El CITE se llevará a cabo en el Anfiteatro de la Universidad Nacional del Santa. Contaremos con señalización y apoyo del equipo de voluntarios para orientarte al llegar."
+      question: "¿Dónde están ubicados?",
+      answer: `Atendemos en ${workshopAddress}. Al confirmar tu cita te compartimos la referencia exacta y estacionamiento cercano si aplica.`,
     },
   ];
 
@@ -46,15 +46,11 @@ export default function FAQSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5BBDD3]/10 border border-[#5BBDD3]/20 mb-6">
             <HelpCircle className="h-4 w-4 text-[#5BBDD3]" />
-            <span className="text-[#2C312D] text-sm font-medium">Preguntas Frecuentes</span>
+            <span className="text-[#2C312D] text-sm font-medium">Preguntas frecuentes</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#2C312D] mb-4">
-            ¿Tienes dudas?
-          </h2>
-          <p className="text-lg text-[#2C312D]/80">
-            Aquí encontrarás las respuestas a las preguntas más comunes
-          </p>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#2C312D] mb-4">¿Tienes dudas?</h2>
+          <p className="text-lg text-[#2C312D]/80">Respuestas rápidas antes de traer tu vehículo al taller.</p>
         </motion.div>
 
         <div className="space-y-4">
@@ -66,28 +62,23 @@ export default function FAQSection() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.05, duration: 0.5 }}
             >
-              <Card 
+              <Card
                 className={`cursor-pointer transition-all duration-300 ${
-                  openIndex === idx 
-                    ? 'bg-white border-2 border-[#BDBF65] shadow-lg' 
-                    : 'bg-white border border-[#2C312D]/10 hover:border-[#BDBF65]/50'
+                  openIndex === idx
+                    ? "bg-white border-2 border-[#BDBF65] shadow-lg"
+                    : "bg-white border border-[#2C312D]/10 hover:border-[#BDBF65]/50"
                 }`}
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-[#2C312D] font-semibold text-lg flex-1 pr-4">
-                      {faq.question}
-                    </h3>
-                    <motion.div
-                      animate={{ rotate: openIndex === idx ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="shrink-0"
-                    >
-                      <ChevronDown className={`h-5 w-5 ${openIndex === idx ? 'text-[#BDBF65]' : 'text-[#2C312D]/50'}`} />
-                    </motion.div>
+                    <h3 className="text-[#2C312D] font-semibold text-lg flex-1 pr-4">{faq.question}</h3>
+                    <ChevronDown
+                      className={`h-5 w-5 text-[#BDBF65] shrink-0 transition-transform duration-300 ${
+                        openIndex === idx ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-
                   <AnimatePresence>
                     {openIndex === idx && (
                       <motion.div
@@ -97,11 +88,9 @@ export default function FAQSection() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-4 mt-4 border-t border-[#2C312D]/10">
-                          <p className="text-[#2C312D]/75 leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </div>
+                        <p className="text-[#2C312D]/70 leading-relaxed pt-4 border-t border-[#2C312D]/10 mt-4">
+                          {faq.answer}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>

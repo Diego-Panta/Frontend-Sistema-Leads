@@ -1,13 +1,15 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Landing from '@/landing/Landing'
+import { siteDescription, siteKeywords, seoOgImagePath, buildPageTitle, buildCanonicalUrl } from '@/shared/site';
+
 const robots = ["index", "follow"];
-const title = "CITE | 2025";
-const description = "Programa de voluntariado de la UNS enfocado en resiliencia urbana y gestión de riesgos.";
-const keywords = ["CITE", "voluntariado", "UNS", "resiliencia urbana", "gestión de riesgos"];
-const url = "https://cite.vercel.app";
-const imageOG = "/logos/CITE_Logotipo%20principal-SF-04.webp";
-const imagetwt = "/logos/CITE_Logotipo%20principal-SF-04.webp";
+const title = buildPageTitle();
+const description = siteDescription;
+const keywords = siteKeywords;
+const url = buildCanonicalUrl('/');
+const imageOG = seoOgImagePath;
+const imagetwt = seoOgImagePath;
 ---
 
 <PublicLayout {robots} {title} {description} {keywords} {url} {imageOG} {imagetwt}>

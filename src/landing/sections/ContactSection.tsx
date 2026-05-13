@@ -6,6 +6,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Instagram, Facebook, Linkedin, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { WhatsAppService } from "@/services/whatsappService";
+import {
+  contactEmail,
+  whatsappUrl,
+  workshopAddress,
+  workshopPhoneDisplay,
+} from "@/shared/site";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -142,27 +148,27 @@ export default function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "202114013@uns.edu.pe",
-      link: "mailto:202114013@uns.edu.pe"
+      value: contactEmail,
+      link: `mailto:${contactEmail}`,
     },
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "(+51) 951011604",
-      link: "https://wa.link/tpuxiu"
+      value: workshopPhoneDisplay,
+      link: whatsappUrl,
     },
     {
       icon: MapPin,
       label: "Ubicación",
-      value: "Chimbote, Ancash, Perú",
-      link: null
-    }
+      value: workshopAddress,
+      link: null,
+    },
   ];
 
   const socialLinks = [
-    { icon: Instagram, label: "Instagram", link: "https://instagram.com", handle: "@cite" },
-    { icon: Facebook, label: "Facebook", link: "https://facebook.com", handle: "CITE Oficial" },
-    { icon: Linkedin, label: "LinkedIn", link: "https://linkedin.com/company/", handle: "CITE" }
+    { icon: Instagram, label: "Instagram", link: "https://instagram.com", handle: "@automecanicasanmiguel" },
+    { icon: Facebook, label: "Facebook", link: "https://facebook.com", handle: "Automecánica San Miguel" },
+    { icon: Linkedin, label: "LinkedIn", link: "https://linkedin.com/company/", handle: "CRMSM" }
   ];
 
   const tipoOpciones = [

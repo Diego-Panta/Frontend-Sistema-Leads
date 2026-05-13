@@ -1,0 +1,57 @@
+---
+import DashboardLayout from "@/crm/layouts/DashboardLayout.astro";
+---
+
+<DashboardLayout>
+  <div class="space-y-6">
+    <div>
+      <h1 class="text-3xl font-bold text-[#2C312D]">Dashboard</h1>
+      <p class="text-[#2C312D]/60 mt-2">
+        Bienvenido al sistema de gestión CRM
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div class="bg-white rounded-lg shadow p-6 border border-[#BDBF65]/20">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-medium text-[#2C312D]/60">Leads Nuevos</h3>
+          <span class="text-2xl font-bold text-[#BDBF65]">24</span>
+        </div>
+        <p class="text-2xl font-bold text-[#2C312D] mt-2">+12%</p>
+        <p class="text-xs text-[#2C312D]/50 mt-1">vs mes anterior</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 border border-[#BDBF65]/20">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-medium text-[#2C312D]/60">Leads Asignados</h3>
+          <span class="text-2xl font-bold text-[#BDBF65]">156</span>
+        </div>
+        <p class="text-2xl font-bold text-[#2C312D] mt-2">+8%</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 border border-[#BDBF65]/20">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-medium text-[#2C312D]/60">Tasa de Conversión</h3>
+          <span class="text-2xl font-bold text-[#BDBF65]">34%</span>
+        </div>
+        <p class="text-2xl font-bold text-[#2C312D] mt-2">+5%</p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-6 border border-[#BDBF65]/20">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-medium text-[#2C312D]/60">Asesores Activos</h3>
+          <span class="text-2xl font-bold text-[#BDBF65]">8</span>
+        </div>
+        <p class="text-2xl font-bold text-[#2C312D] mt-2">2</p>
+        <p class="text-xs text-[#2C312D]/50 mt-1">con asignaciones pendientes</p>
+      </div>
+    </div>
+
+    <div class="bg-[#BDBF65]/10 rounded-lg p-6 border border-[#BDBF65]/30">
+      <h2 class="text-lg font-semibold text-[#2C312D]">¡Módulo en construcción!</h2>
+      <p class="text-[#2C312D]/70 mt-2">
+        Próximamente: Gráficos de rendimiento, lista de leads recientes y más métricas.
+      </p>
+    </div>
+  </div>
+</DashboardLayout>

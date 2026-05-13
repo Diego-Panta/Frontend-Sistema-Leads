@@ -1,0 +1,41 @@
+---
+// src/crm/layouts/AuthLayout.astro
+import "@/styles/global.css";
+import { siteFullName, siteShortName } from "@/shared/site";
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = `Iniciar Sesión - ${siteShortName}`, description = `Accede al sistema CRM de ${siteFullName}` } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F8F7F3" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Prevenir indexing de páginas de auth -->
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-[#F8F7F3] to-[#e8e7e3]">
+    <div class="min-h-screen flex flex-col">
+      <main class="flex-1 flex items-center justify-center px-4 py-12">
+        <slot />
+      </main>
+      
+      <!-- Footer simplificado -->
+      <footer class="py-6 text-center">
+        <p class="text-[#2C312D]/50 text-sm">
+          © {new Date().getFullYear()} {siteShortName} — {siteFullName}
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

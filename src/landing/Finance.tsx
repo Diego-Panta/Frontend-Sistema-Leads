@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, BarChart, TrendingUp, Users, Gift, Truck, Package, Candy, School, GraduationCap, University, BarChart3 } from "lucide-react";
 import { motion } from "framer-motion";
 import Footer from "@/components/core/Footer";
+import { siteShortName } from "@/shared/site";
 
 // Definición de tipos
 interface Donacion {
@@ -236,14 +237,14 @@ export default function Finance() {
   const metricas: Metrica[] = [
     {
       icon: TrendingUp,
-      title: "Total de Donaciones",
+      title: "Total de registros",
       value: estadisticas.totalDonaciones.toString(),
-      description: "Registros de donantes",
+      description: "Movimientos cargados en el panel",
       progress: Math.min((estadisticas.totalDonaciones / 50) * 100, 100)
     },
     {
       icon: University,
-      title: "Universidad Líder",
+      title: "Origen principal",
       value: estadisticas.universidades[0]?.nombre || "N/A",
       description: `${estadisticas.universidades[0]?.porcentaje || "0"}% del total`,
       progress: estadisticas.universidades[0] ? 100 : 0
@@ -257,9 +258,9 @@ export default function Finance() {
     },
     {
       icon: Gift,
-      title: "Donativo Más Popular",
+      title: "Categoría frecuente",
       value: Object.entries(estadisticas.porTipoDonativo).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A",
-      description: "Tipo de donación preferido",
+      description: "Tipo de ítem más registrado",
       progress: Object.entries(estadisticas.porTipoDonativo).length > 0 ? 100 : 0
     }
   ];
@@ -370,7 +371,7 @@ export default function Finance() {
 
             <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
               Visualiza el impacto de nuestra comunidad universitaria. 
-              Cada donación cuenta para hacer posible el CITE.
+              Cada registro fortalece la trazabilidad de {siteShortName} en Automecánica San Miguel.
             </p>
           </motion.div>
         </div>
@@ -445,12 +446,12 @@ export default function Finance() {
               Visualización de Datos
             </h2>
             <p className="text-white/70 max-w-2xl mx-auto">
-              Gráficos interactivos que muestran la distribución de donaciones
+              Gráficos de ejemplo basados en datos históricos importados al sistema {siteShortName}.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {/* Gráfico Circular - Distribución por Universidad */}
+            {/* Gráfico circular — distribución por origen (dataset demo) */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -461,7 +462,7 @@ export default function Finance() {
                 <CardHeader>
                   <CardTitle className="text-xl text-white flex items-center gap-2">
                     <University className="h-5 w-5 text-blue-300" />
-                    Distribución por Universidad
+                    Distribución por origen
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
@@ -472,7 +473,7 @@ export default function Finance() {
                       porcentaje: uni.porcentaje,
                       color: uni.color
                     }))}
-                    title="Universidades"
+                    title="Origen"
                   />
                 </CardContent>
               </Card>
@@ -600,7 +601,7 @@ export default function Finance() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-md">
               <CardHeader>
                 <CardTitle className="text-xl text-white">
-                  Registro Completo de Donaciones
+                  Registro detallado (dataset de demostración)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -610,7 +611,7 @@ export default function Finance() {
                       <tr className="border-b border-white/20">
                         <th className="text-left py-3 px-4 text-white/80 font-medium">#</th>
                         <th className="text-left py-3 px-4 text-white/80 font-medium">Nombres Completos</th>
-                        <th className="text-left py-3 px-4 text-white/80 font-medium">Universidad</th>
+                        <th className="text-left py-3 px-4 text-white/80 font-medium">Origen</th>
                         <th className="text-left py-3 px-4 text-white/80 font-medium">Código</th>
                         <th className="text-left py-3 px-4 text-white/80 font-medium">Facultad</th>
                         <th className="text-left py-3 px-4 text-white/80 font-medium">Escuela Profesional</th>

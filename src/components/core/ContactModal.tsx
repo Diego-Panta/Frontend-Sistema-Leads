@@ -37,7 +37,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     try {
       const result = await WhatsAppService.sendImageMessage(
         phone, 
-        `¡Hola! 🎄\n\nGracias por tu interés en CITE 2025. Te comparto información sobre nuestro programa de voluntariado de la UNS enfocado en resiliencia urbana y gestión de riesgos.\n\n🎁 *Qué incluye tu participación:*\n• Show en vivo con artistas locales\n• Experiencia navideña única\n• Apoyo directo a familias necesitadas\n\n📍 *Fecha:* 28 de Noviembre, 2025\n🕕 *Hora:* 6:00 PM\n🎫 *Entrada:* 1 juguete o donación voluntaria\n\n¿Te gustaría saber más sobre cómo participar o apoyar nuestra causa? ¡Estamos aquí para ayudarte! 🎁`
+        `¡Hola!\n\nGracias por tu interés en *CRMSM* — *Automecánica San Miguel*.\n\nTe compartimos información sobre citas, diagnóstico y seguimiento de servicio por WhatsApp.\n\n🔧 *Qué puedes hacer ahora:*\n• Agendar revisión o mantenimiento\n• Solicitar cotización con fotos\n• Consultar el estado de tu vehículo en taller\n\n📍 *Ubicación:* San Miguel, Perú\n📞 *Central:* (+51) 951 011 604\n\n¿Quieres que un asesor te confirme el próximo turno disponible?`
       );
       
       if (result.success) {

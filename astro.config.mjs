@@ -1,14 +1,18 @@
-// @ts-check
+// astro.config.mjs
 import { defineConfig } from 'astro/config';
-import tailwindcss from "@tailwindcss/vite";
 import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
 export default defineConfig({
-    base: '/',
-    site: "https://navifest.vercel.app",
-    integrations: [react()],
-    vite: {
-        plugins: [tailwindcss()],
+  integrations: [react(), tailwind()],
+  vite: {
+    resolve: {
+      alias: {
+        '@': '/src',
+      },
     },
+  },
+  server: {
+    port: 4321,
+  },
 });

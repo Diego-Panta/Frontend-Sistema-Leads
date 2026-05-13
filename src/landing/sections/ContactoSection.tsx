@@ -3,20 +3,30 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  Instagram, 
-  Youtube, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Instagram,
+  Youtube,
+  Linkedin,
   MessageCircle,
   Users,
   Building2,
-  User
+  User,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  contactEmail,
+  socialLinks,
+  whatsappUrl,
+  workshopAddress,
+  workshopPhoneDisplay,
+  siteFullName,
+} from "@/shared/site";
+
+const socialIcons = [Instagram, Youtube, Linkedin] as const;
 
 export default function ContactoSection() {
   const [formData, setFormData] = useState({
@@ -24,25 +34,24 @@ export default function ContactoSection() {
     email: "",
     telefono: "",
     organizacion: "",
-    tipo: "voluntario",
-    mensaje: ""
+    tipo: "cliente",
+    mensaje: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulación de envío
+
     setTimeout(() => {
       alert("¡Mensaje enviado! Te contactaremos pronto.");
       setFormData({
@@ -50,8 +59,8 @@ export default function ContactoSection() {
         email: "",
         telefono: "",
         organizacion: "",
-        tipo: "voluntario",
-        mensaje: ""
+        tipo: "cliente",
+        mensaje: "",
       });
       setIsSubmitting(false);
     }, 1500);
@@ -61,42 +70,41 @@ export default function ContactoSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "cite@laboratoriourbano.org",
-      link: "mailto:cite@laboratoriourbano.org",
-      color: "#BDBF65"
+      value: contactEmail,
+      link: `mailto:${contactEmail}`,
+      color: "#BDBF65",
     },
     {
       icon: Phone,
       label: "WhatsApp",
-      value: "(+51) 951 011 604",
-      link: "https://wa.link/cite",
-      color: "#5BBDD3"
+      value: workshopPhoneDisplay,
+      link: whatsappUrl,
+      color: "#5BBDD3",
     },
     {
       icon: MapPin,
       label: "Ubicación",
-      value: "Lima, Perú",
+      value: workshopAddress,
       link: null,
-      color: "#D79259"
-    }
+      color: "#D79259",
+    },
   ];
 
-  const socialLinks = [
-    { icon: Instagram, label: "Instagram", link: "https://www.instagram.com/cite.urb/", handle: "@cite.urb", color: "#D79259" },
-    { icon: Youtube, label: "Youtube", link: "https://www.youtube.com/channel/UCDVi2AdPzPFqyNJjBDU8Lig", handle: "CITE Laboratorio Urbano", color: "#5BBDD3" },
-    { icon: Linkedin, label: "LinkedIn", link: "https://www.linkedin.com/company/cite-ciudadresiliente/", handle: "CITE Lab", color: "#9E5BD3" }
-  ];
+  const socialWithIcons = socialLinks.map((s, i) => ({
+    ...s,
+    icon: socialIcons[i] ?? Instagram,
+    color: ["#D79259", "#5BBDD3", "#9E5BD3"][i] ?? "#D79259",
+  }));
 
   const tipoOpciones = [
-    { value: "voluntario", label: "Voluntario/a", icon: Users },
-    { value: "aliado", label: "Posible aliado", icon: Building2 },
-    { value: "comunidad", label: "Miembro de comunidad", icon: User },
-    { value: "otro", label: "Otro", icon: User }
+    { value: "cliente", label: "Cliente particular", icon: Users },
+    { value: "flota", label: "Flota / empresa", icon: Building2 },
+    { value: "proveedor", label: "Proveedor / alianza", icon: Building2 },
+    { value: "otro", label: "Otro", icon: User },
   ];
 
   return (
     <section id="contacto" className="py-20 md:py-28 relative overflow-hidden bg-white">
-      {/* Elementos decorativos */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-40 left-20 text-9xl">📬</div>
         <div className="absolute bottom-40 right-20 text-9xl">💬</div>
@@ -111,20 +119,17 @@ export default function ContactoSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#2C312D] mb-6">
-            Conversemos para
-            <span className="block text-[#BDBF65]">
-              construir juntos
-            </span>
+            Agenda o consulta
+            <span className="block text-[#BDBF65]">en un solo canal</span>
           </h2>
 
           <p className="text-lg text-[#2C312D]/80 leading-relaxed">
-            ¿Quieres sumarte como voluntario, establecer una alianza o proponer una idea para tu territorio? 
-            Estamos aquí para escucharte y co-crear soluciones.
+            Cuéntanos el modelo de tu vehículo, el síntoma y la urgencia. En {siteFullName} te respondemos con una
+            propuesta clara antes de reservar cita.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Formulario */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -170,9 +175,7 @@ export default function ContactoSection() {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm text-[#2C312D]/80 font-medium">
-                        Teléfono
-                      </label>
+                      <label className="text-sm text-[#2C312D]/80 font-medium">Teléfono</label>
                       <Input
                         name="telefono"
                         type="tel"
@@ -183,14 +186,12 @@ export default function ContactoSection() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm text-[#2C312D]/80 font-medium">
-                        Organización (opcional)
-                      </label>
+                      <label className="text-sm text-[#2C312D]/80 font-medium">Empresa o flota (opcional)</label>
                       <Input
                         name="organizacion"
                         value={formData.organizacion}
                         onChange={handleInputChange}
-                        placeholder="¿Representas a alguna organización?"
+                        placeholder="RUC o nombre comercial"
                         className="bg-white border border-[#2C312D]/20 text-[#2C312D] placeholder:text-[#2C312D]/40 focus:border-[#BDBF65] focus:ring-[#BDBF65]/20"
                       />
                     </div>
@@ -198,7 +199,7 @@ export default function ContactoSection() {
 
                   <div className="space-y-2">
                     <label className="text-sm text-[#2C312D]/80 font-medium">
-                      ¿Cómo te gustaría participar? <span className="text-[#D79259]">*</span>
+                      Motivo del contacto <span className="text-[#D79259]">*</span>
                     </label>
                     <select
                       name="tipo"
@@ -223,14 +224,14 @@ export default function ContactoSection() {
                       name="mensaje"
                       value={formData.mensaje}
                       onChange={handleInputChange}
-                      placeholder="Cuéntanos tu idea, propuesta o cómo te gustaría colaborar..."
+                      placeholder="Marca, modelo, año, kilometraje y qué notas en el vehículo..."
                       rows={5}
                       className="bg-white border border-[#2C312D]/20 text-[#2C312D] placeholder:text-[#2C312D]/40 focus:border-[#BDBF65] focus:ring-[#BDBF65]/20 resize-none"
                       required
                     />
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
@@ -244,7 +245,6 @@ export default function ContactoSection() {
             </Card>
           </motion.div>
 
-          {/* Información de contacto */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -252,7 +252,6 @@ export default function ContactoSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            {/* Contacto directo */}
             <Card className="bg-white border border-[#2C312D]/10">
               <CardHeader>
                 <CardTitle className="text-lg text-[#2C312D]">Contacto directo</CardTitle>
@@ -266,11 +265,11 @@ export default function ContactoSection() {
                     <div className="flex-1 min-w-0">
                       <div className="text-sm text-[#2C312D]/70">{item.label}</div>
                       {item.link ? (
-                        <a 
+                        <a
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#2C312D] font-medium hover:text-[#BDBF65] transition-colors"
+                          className="text-[#2C312D] font-medium hover:text-[#BDBF65] transition-colors break-all"
                         >
                           {item.value}
                         </a>
@@ -283,18 +282,17 @@ export default function ContactoSection() {
               </CardContent>
             </Card>
 
-            {/* Redes sociales */}
             <Card className="bg-white border border-[#2C312D]/10">
               <CardHeader>
                 <CardTitle className="text-lg text-[#2C312D]">Síguenos</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                {socialLinks.map((social, idx) => {
+                {socialWithIcons.map((social, idx) => {
                   const Icon = social.icon;
                   return (
                     <a
                       key={idx}
-                      href={social.link}
+                      href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 p-3 rounded-xl bg-[#F8F7F3] hover:bg-[#BDBF65]/10 transition-all duration-300 group"
@@ -313,15 +311,15 @@ export default function ContactoSection() {
               </CardContent>
             </Card>
 
-            {/* Mensaje inspirador */}
             <Card className="bg-gradient-to-br from-[#BDBF65]/10 to-[#5BBDD3]/10 border-2 border-[#BDBF65]/30">
               <CardContent className="p-6 text-center">
                 <p className="text-[#2C312D]/80 text-sm leading-relaxed italic">
-                  "Construir ciudades más justas es posible cuando personas, organizaciones e instituciones 
-                  trabajamos juntas con un propósito común."
+                  &ldquo;La confianza se gana con diagnósticos honestos, plazos realistas y un taller que cumple lo
+                  prometido.&rdquo;
                 </p>
-                <p className="text-[#BDBF65] font-semibold mt-3">
-                  ¡Hablemos para hacerlo realidad! 💚
+                <p className="text-[#BDBF65] font-semibold mt-3 flex items-center justify-center gap-1">
+                  <MessageCircle className="h-4 w-4" />
+                  Te esperamos en San Miguel
                 </p>
               </CardContent>
             </Card>

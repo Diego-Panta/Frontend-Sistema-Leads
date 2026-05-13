@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, FolderOpen, MessageCircle } from "lucide-react";
+import { Menu, X, Wrench, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BrandMark } from "@/components/core/BrandMark";
 
 interface NavbarProps {
   scrollToTop: () => void;
@@ -13,10 +14,10 @@ export default function Navbar({ scrollToTop }: NavbarProps) {
   const navLinks = [
     { label: "Inicio", href: "#hero" },
     { label: "Nosotros", href: "#nosotros" },
-    { label: "Líneas de acción", href: "#lineas-accion" },
+    { label: "Servicios", href: "#lineas-accion" },
     { label: "Impacto", href: "#impacto" },
-    { label: "Comunidad", href: "#comunidad" },
-    { label: "Contacto", href: "#contacto" }
+    { label: "Clientes", href: "#comunidad" },
+    { label: "Contacto", href: "#contacto" },
   ];
 
   const handleContactClick = () => {
@@ -27,18 +28,10 @@ export default function Navbar({ scrollToTop }: NavbarProps) {
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center cursor-pointer" onClick={scrollToTop}>
-            <img
-              src="/logos/CITE_Logotipo principal-SF-03.webp"
-              alt="CITE"
-              className="w-40 h-12 object-contain"
-              loading="eager"
-              decoding="async"
-            />
+          <div className="flex items-center cursor-pointer min-w-0" onClick={scrollToTop}>
+            <BrandMark iconSize={36} />
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
@@ -51,39 +44,37 @@ export default function Navbar({ scrollToTop }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="outline"
               className="border-2 border-primary text-foreground hover:text-primary font-medium"
-              onClick={() => window.open("/portafolio", "_blank")}
+              onClick={() => document.getElementById("lineas-accion")?.scrollIntoView({ behavior: "smooth" })}
             >
-              <FolderOpen className="mr-2 h-4 w-4" />
-              Nuestro portafolio
+              <Wrench className="mr-2 h-4 w-4" />
+              Servicios
             </Button>
             <Button
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold shadow-md"
-              onClick={handleContactClick}
+              variant="ghost"
+              className="text-foreground hover:text-primary"
+              onClick={() => window.location.href = "/crm/login"}
             >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              Sumate a nosotros
+              Acceder al CRM
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/30"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? 
-              <X className="h-6 w-6 text-foreground" /> : 
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-foreground" />
+            ) : (
               <Menu className="h-6 w-6 text-foreground" />
-            }
+            )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -104,30 +95,29 @@ export default function Navbar({ scrollToTop }: NavbarProps) {
                   {link.label}
                 </a>
               ))}
-              
-              {/* Botones en móvil */}
+
               <div className="space-y-3 pt-4 border-t border-border">
                 <Button
                   variant="outline"
                   className="w-full border-2 border-primary text-foreground hover:bg-primary/10 font-medium"
                   onClick={() => {
                     setIsMenuOpen(false);
-                    window.open("/portafolio", "_blank");
+                    document.getElementById("lineas-accion")?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
-                  <FolderOpen className="mr-2 h-4 w-4" />
-                  Nuestro portafolio
+                  <Wrench className="mr-2 h-4 w-4" />
+                  Servicios
                 </Button>
-                
+
                 <Button
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+                  variant="ghost"
+                  className="w-full justify-start"
                   onClick={() => {
                     setIsMenuOpen(false);
-                    handleContactClick();
+                    window.location.href = "/crm/login";
                   }}
                 >
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Sumate a nosotros
+                  Acceder al CRM
                 </Button>
               </div>
             </nav>
